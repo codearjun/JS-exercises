@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resturant_Calculator</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+
+        
+        "use strict";
+        const formatter = new Intl.NumberFormat('en-CA', {style: 'currency', currency:'CAD'})
+
+        
+
+        
+
+        
+        
+        
+        
+        
+        
+        function calc_tax() {
+
+            const FED_TAX = 0.05;
+            const PROV_TAX = 0.09975;
+
+            let current_price = document.getElementById("idPrice").value;
+            let current_diners = document.getElementById("idDiners").value;
+            let current_satisfaction = document.getElementById("idSatisfaction").value;
+
+
+         
+            let net_price = (current_diners * current_price)
+            let taxes = (current_price * FED_TAX) + (current_price * PROV_TAX) * current_diners;
+            let fedtax = (net_price * FED_TAX)
+            let provtax = (net_price * PROV_TAX)
+            let toatlplustax = net_price + provtax + fedtax
+            
+            
+            String([current_satisfaction]);
+            let tip_p = [current_satisfaction];
+            
+            
+            let nice = 5;
+            if (tip_p == "A")
+
+            {
+
+                nice = 0.2
+
+            } else if (tip_p == "B") 
+            {
+                nice = 0.15
+            } else if (tip_p == "C") {
+
+                nice = 0.10
+            } else {
+                nice = 0
+            }
+            
+            let tipamount = (net_price * nice);
+            let grandtotal = tipamount + toatlplustax
+            let totalperdiner = grandtotal / current_diners
+
+
+            
+           
+
+            //document.getElementById("idResult").value = formatter.format(fedtax);
+            document.getElementById("idResult2").value = formatter.format(net_price);
+            document.getElementById("idResult3").value = formatter.format(nice);
+            document.getElementById("idResult4").value = formatter.format(fedtax);
+            document.getElementById("idResult5").value = formatter.format(provtax);
+            document.getElementById("idResult6").value = formatter.format(toatlplustax);
+            document.getElementById("idResult7").value = formatter.format(tipamount);
+            document.getElementById("idResult8").value = formatter.format(grandtotal);
+            document.getElementById("idResult9").value = formatter.format(totalperdiner);
+            //document.getElementById("idResult").textContent = "$" + taxes.toFixed(2);
+
+
+
+        }
+
+
+        
+
+    </script>
+    <script>
+        "use strict";
+        // u = 8;
+    </script>
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1 class="text-center">
+            Bill Calculator
+        </h1>
+  
+        <h3 class="text-center">
+            Enter the Price of the meal per person<br>
+            Number of Diners<br>
+            & Customer staisfaction:<br>
+            Tip: A=20% B=15% C=10 D=0%
+        </h3>
+            
+
+        <div class="container">
+            <div class="row mt-4 mb-4">
+                <label for="idPrice" class="col-form-label col-sm-2">Price</label>
+                <div class="col-sm">
+                    <input class="form-control form-control-sm" id="idPrice" type="number" name="fPrice">
+                </div>
+            </div>
+
+            <div class="row mt-4 mb-4">
+                <label for="idDiners" class="col-form-label col-sm-2">Diners</label>
+            <div class="col-sm">
+                    <input class="form-control form-control-sm" id="idDiners" type="number" name="fDiners">
+                </div>
+
+            </div>
+
+
+           <div class="row mt-4 mb-4">
+            <label for="idSatisfaction" class="col-form-label col-sm-2">Customer Satisfaction</label>
+            <div class="col-sm">
+                <select class="form-control" id="idSatisfaction" type="radio" name="fPrice">
+
+                   
+                        
+                    
+                    <option>A</optiion>
+            
+                    <option>B</option>
+
+                    <option>C</option>
+
+                    <option>D</option>
+                   
+           </div>       
+        
+</div>
+<br>
+<br>
+
+                     
+    
+</div>
+
+
+           <div class="container">
+
+            <div class="row  mt-4 mb-4">
+                <label for="idResult" class="col-form-label col-sm-2" >Result</label>
+                <div class="col-sm">
+                    <input class="form-control form-control-sm" id="idResult" type="text" name="fPrice" disabled>
+                </div>
+            </div>
+            
+
+            <div class="container">
+
+                <div class="row  mt-4 mb-4">
+                    <label for="idResult2" class="col-form-label col-sm-2" >Net Price</label>
+                    <div class="col-sm">
+                        <input class="form-control form-control-sm" id="idResult2" type="text" name="fPrice" disabled>
+                    </div>
+                </div>
+
+
+
+                <div class="container">
+
+                    <div class="row  mt-4 mb-4">
+                        <label for="idResult3" class="col-form-label col-sm-2" >Tip Percentage</label>
+                        <div class="col-sm">
+                            <input class="form-control form-control-sm" id="idResult3" type="text" name="fPrice" disabled>
+                        </div>
+                    </div>
+
+                    <div class="container">
+
+                        <div class="row  mt-4 mb-4">
+                            <label for="idResult4" class="col-form-label col-sm-2" >Fed Tax</label>
+                            <div class="col-sm">
+                                <input class="form-control form-control-sm" id="idResult4" type="text" name="fPrice" disabled>
+                            </div>
+                        </div>
+
+                        <div class="container">
+
+                            <div class="row  mt-4 mb-4">
+                                <label for="idResult5" class="col-form-label col-sm-2" >Prov Tax</label>
+                                <div class="col-sm">
+                                    <input class="form-control form-control-sm" id="idResult5" type="text" name="fPrice" disabled>
+                                </div>
+                            </div>
+            
+            
+                            <div class="container">
+
+                                <div class="row  mt-4 mb-4">
+                                    <label for="idResult6" class="col-form-label col-sm-2" >Total with Tax</label>
+                                    <div class="col-sm">
+                                        <input class="form-control form-control-sm" id="idResult6" type="text" name="fPrice" disabled>
+                                    </div>
+                                </div>
+            
+
+                                <div class="container">
+
+                                    <div class="row  mt-4 mb-4">
+                                        <label for="idResult7" class="col-form-label col-sm-2" >Tip Amount</label>
+                                        <div class="col-sm">
+                                            <input class="form-control form-control-sm" id="idResult7" type="text" name="fPrice" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="container">
+
+                                        <div class="row  mt-4 mb-4">
+                                            <label for="idResult8" class="col-form-label col-sm-2" >Grand Total</label>
+                                            <div class="col-sm">
+                                                <input class="form-control form-control-sm" id="idResult8" type="text" name="fPrice" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="container">
+
+                                            <div class="row  mt-4 mb-4">
+                                                <label for="idResult9" class="col-form-label col-sm-2" >Total per Diner</label>
+                                                <div class="col-sm">
+                                                    <input class="form-control form-control-sm" id="idResult9" type="text" name="fPrice" disabled>
+                                                </div>
+                                            </div>
+                            <br>
+            <br>
+
+            
+        
+        </div>
+
+            <button class="btn btn-primary col-sm-2" onclick="calc_tax()">Calculate Bill</button>
+
+</body>
+
+<br>
+<br>
+
+<footer>
+© 2023 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+</footer>
+</html>
+
+

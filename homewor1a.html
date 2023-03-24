@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <script>
+        "use strict";
+        const formatter = new Intl.NumberFormat('en-CA', {style: 'currency', currency:'CAD'})
+
+        function calc_tax() {
+
+            const FED_TAX = 0.05;
+            const PROV_TAX = 0.09975;
+            const A = 0.2
+            const B = 0.15
+            const C = 0.10
+            const D = 0
+
+            let current_price = document.getElementById("idPrice").value;
+            let current_diners = document.getElementById("idDiners").value;
+            let Average_Satisfaction = document.getElementById("idSatisfaction").value;
+             
+
+            // Calculate the tax.
+            let net_price = (current_price * current_diners);
+            let tip = Average_Satisfaction
+            let total_tip = tip + 1;
+            let prov_tax = PROV_TAX * (current_diners * current_price);
+            let fed_tax = FED_TAX * (current_diners * current_price);
+            let tax= fed_tax + prov_tax;
+            let total_price = (net_price + tax);
+           
+
+
+
+
+
+
+
+
+            document.getElementById("idResult").value = total_price;
+            //formatter.format (tip);
+            //document.getElementById("idResult").textContent = "$" + taxes.toFixed(2);
+        }
+    </script>
+    <script>
+        "use strict";
+        // u = 8;
+    </script>
+</head>
+<body>
+    
+    <div class="container">
+
+        <h1 class="text-center">
+            Bill Calculator
+        </h1>
+  
+        <h2 class="text-center">
+            Home Work 1a
+        </h2>
+            
+            <div class="row mt-4 mb-4">
+                <label for="idPrice" class="col-form-label col-sm-2">Price</label>
+                <div class="col-sm">
+                    <input class="form-control form-control-sm" id="idPrice" type="number" name="fPrice">
+                </div> 
+
+                <div class="row mt-4 mb-4">
+                    <label for="idDiners" class="col-form-label col-sm-2">Diners</label>
+                <div class="col-sm">
+                        <input class="form-control form-control-sm" id="idDiners" type="number" name="fDiners">
+                    </div>
+            </div>
+
+
+                <div class="row mt-4 mb-4">
+                     <label for="idSatisfaction" class="col-form-label col-sm-2">Satisfaction</label>
+                <div class="col-sm">
+                         <input class="form-control form-control-sm" id="idSatisfaction" type="number" name="fSatisfaction">
+                        </div> 
+
+           
+            <div class="row  mt-4 mb-4">
+                <label for="idResult" class="col-form-label col-sm-2" >Total Price</label>
+                <div class="col-sm">
+                    <input class="form-control form-control-sm" id="idResult" type="text" name="fPrice" disabled>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary col-sm-2" onclick="calc_tax()">Calculate</button>
+                     
+    </div>
+
+</body>
+</html>

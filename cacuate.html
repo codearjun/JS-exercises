@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>home_work_1a</title>
+<script>
+
+    const formatter = new Intl.NumberFormat('en-US', {style: 'currency', currency:'CAD'})
+    function calc_tax()  {
+
+
+        const FED_TAX = 0.05;
+        const PROV_TAX = 0.0975
+        let current_price = document.getElementById("idPrice").value;
+        let total_people = document.getElementById("idDiners").value;
+
+
+        // Calculate the tax.
+        let taxes = (current_price * FED_TAX) + (current_price * PROV_TAX) * total_people;
+
+        document.getElementById("idResult").textContent = formatter.format(taxes) ;
+
+        //document.getElementbyId('idResult').textContent - formater.format(taxes);
+
+
+        
+        }
+    
+
+</script>
+
+</head>
+<body>
+    
+
+<label for="idPrice">enter the proce to have tax calculated</label>
+<input id="idPrice" type="'text"  name="fPrice">
+<label for="idDiners">enter the No of Diners to have tax calculated</label>
+<input id="idDiners" type="number" name='fDiners'>
+<label for="idSatisfaction">enter the level of satisfaction to have tax calculated</label>
+<input id="idSatisfaction" type="radio" name="fSatisfaction">
+
+
+
+<br>
+
+<button onclick="calc_tax()">Calculate Tax</button>
+
+<br>
+
+<span id="idResult"></span>
+
+
+</body>
+</html>
